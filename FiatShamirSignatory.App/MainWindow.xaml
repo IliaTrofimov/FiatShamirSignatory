@@ -1,0 +1,84 @@
+﻿<Window x:Class="FiatShamirSignatory.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FiatShamirSignatory.App" xmlns:viewmodels="clr-namespace:FiatShamirSignatory.App.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
+        mc:Ignorable="d"
+        Title="Цифровая подпись Фиата-Шамира | Расчётное задание КМЗИ" Height="450" Width="800" Style="{StaticResource Global}">
+  <Grid Margin="0,0,0,10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition MaxWidth="400"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+
+    <Menu Grid.Row="0" Grid.ColumnSpan="2">
+      <MenuItem Header="Файл">
+        <MenuItem Header="Очистить" Click="ClearAll_Click"/>
+        <MenuItem Header="Закрыть" Click="Close_Click"/>
+      </MenuItem>
+      <MenuItem Header="Ключи">
+        <MenuItem Header="Загрузить" Click="LoadKeys_Click"/>
+        <MenuItem Header="Сгенерировать" Click="GenerateKeys_Click"/>
+        <Separator/>
+        <MenuItem Header="Сохранить" Click="SaveKeys_Click"/>
+        <Separator/>
+        <MenuItem Header="Очистить" Click="ClearKeys_Click"/>
+      </MenuItem>
+      <MenuItem Header="Цифровые подписи">
+        <MenuItem Header="Подписать сообщение" Click="Sign_Click" IsEnabled="{Binding CanSaveKeys}"/>
+        <MenuItem Header="Проверить подлинность" Click="Verify_Click" />
+      </MenuItem>
+      <MenuItem Header="О программе" Click="About_Click"/>
+    </Menu>
+
+    <GroupBox Grid.Row="1" Grid.Column="1" Margin="5,0" Header="Параметры подписи" Style="{StaticResource GroupBox}">
+      <DockPanel>
+        <StackPanel Margin="0,5,0,5" DockPanel.Dock="Top">
+          <Label Padding="0">
+            <TextBlock>Закрытый ключ <Run FontStyle="Italic">A</Run><Run FontStyle="Italic" FontSize="11" BaselineAlignment="Subscript">i</Run></TextBlock>
+          </Label>
+          <TextBox Style="{StaticResource TextBoxRounded_Keys}" Text="{Binding PrivateKeyAString, Mode=OneWay}" IsReadOnly="True" MinHeight="60"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,0,0,5" DockPanel.Dock="Top">
+          <Label Padding="0">
+            <TextBlock>Открытый ключ <Run FontStyle="Italic">B</Run><Run FontStyle="Italic" FontSize="11" BaselineAlignment="Subscript">i</Run></TextBlock>
+          </Label>
+          <TextBox Style="{StaticResource TextBoxRounded_Keys}" Text="{Binding PublicKeyBString, Mode=OneWay}" IsReadOnly="True" MinHeight="60"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,0,0,20" DockPanel.Dock="Top">
+          <Label Padding="0">
+            <TextBlock>Открытый ключ <Run FontStyle="Italic">n</Run></TextBlock>
+          </Label>
+          <TextBox Style="{StaticResource TextBoxRounded_Keys}" Text="{Binding PublicKeyNString, Mode=OneWay}" IsReadOnly="True"/>
+        </StackPanel>
+
+        <Button Content="Сгенерировать ключи" Style="{StaticResource Button}" Margin="0,0,0,10" DockPanel.Dock="Top" Click="GenerateKeys_Click"/>
+        <DockPanel DockPanel.Dock="Top">
+          <Button Content="Сохранить ключи" Margin="0,0,5,0" Style="{StaticResource Button}" IsEnabled="{Binding CanSaveKeys}" Click="SaveKeys_Click" HorizontalAlignment="Left"/>
+          <Button Content="Загрузить ключи" Style="{StaticResource Button}" Click="LoadKeys_Click" HorizontalAlignment="Right"/>
+        </DockPanel>
+
+        <TextBlock Text="{Binding SignatoryName}" DockPanel.Dock="Top" TextWrapping="Wrap" TextAlignment="Center" FontSize="10" FontStyle="Italic" />
+      </DockPanel>
+    </GroupBox>
+
+    <GroupBox Grid.Row="2" Grid.Column="1" Header="Действия" Style="{StaticResource GroupBox}">
+      <StackPanel>
+        <Button Content="Подписать собщение" Style="{StaticResource Button}" Margin="0,5" Click="Sign_Click" VerticalAlignment="Bottom" IsEnabled="{Binding CanSaveKeys}"/>
+        <Button Content="Проверить подлинность" Style="{StaticResource Button}" Click="Verify_Click" VerticalAlignment="Bottom"/>
+      </StackPanel>
+    </GroupBox>
+      
+    <GroupBox Grid.Row="1"  Grid.RowSpan="2" Grid.Column="0" Header="{Binding VerificationResult, TargetNullValue=Сообщение}" Style="{StaticResource GroupBox}">
+      <TextBox Text="{Binding Text}" BorderThickness="0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="auto"/>
+    </GroupBox>
+  </Grid>
+</Window>

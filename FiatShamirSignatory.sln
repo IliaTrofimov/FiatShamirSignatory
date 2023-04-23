@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiatShamirSignatory.Algorythm", "FiatShamirSignatory.Algorythm\FiatShamirSignatory.Algorythm.csproj", "{61B7E56B-2330-456B-A96A-2EA9AAAEBED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiatShamirSignatory.App", "FiatShamirSignatory.App\FiatShamirSignatory.App.csproj", "{BAD21F2D-6CB0-4F44-B967-99EB90EAE2A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61B7E56B-2330-456B-A96A-2EA9AAAEBED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B7E56B-2330-456B-A96A-2EA9AAAEBED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B7E56B-2330-456B-A96A-2EA9AAAEBED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B7E56B-2330-456B-A96A-2EA9AAAEBED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD21F2D-6CB0-4F44-B967-99EB90EAE2A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD21F2D-6CB0-4F44-B967-99EB90EAE2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD21F2D-6CB0-4F44-B967-99EB90EAE2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD21F2D-6CB0-4F44-B967-99EB90EAE2A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF5E83B6-EC64-4BAE-90F3-D92F5A1F6871}
+	EndGlobalSection
+EndGlobal
